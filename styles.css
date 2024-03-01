@@ -4,18 +4,28 @@ body {
     justify-content: center;
 }
 
-#container {
+h1 {
     display: flex;
+    justify-content: center;
+}
+
+div {
+    display: flex;
+}
+
+#container {
     flex-direction: column;
     background-color: aqua;
 }
 
 #container div {
-    padding: 20px;
     background-color: yellowgreen;
+    padding: 5px;
     margin: 5px;
 }
 
+
 .square {
     border: 5px;
+    border-color: black;
 }

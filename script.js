@@ -1,27 +1,23 @@
 const container = document.querySelector('#container');
 
-i = '0';
-
-function makeRowSquares(number) {
+for (i = 0; i < 16; i++) {
     let rowSquare = document.createElement('div');
-    rowSquare.setAttribute('id',`rowSquare${number}`);
+    rowSquare.setAttribute('id',`rowSquare${i}`);
     rowSquare.textContent = '';
     rowSquare.style.flexDirection = 'row';
     container.appendChild(rowSquare);
     console.log(rowSquare)
 }
 
-function makeColumnSquares() {
-    for (i = 0; i < 16; i++) {
+for (i = 0; i < 16; i++) {
+    let rowSquareNumber = document.querySelector(`#rowSquare${i}`);
+    console.log(rowSquareNumber)
+    
+    for (j = 0; j < 16; j++) {
         let square = document.createElement('div');
         square.classList.add('square');
         square.textContent = '';
+        rowSquareNumber.appendChild(square);
+        console.log(rowSquareNumber);
     }
-}
-
-
-const row = [];
-
-for (i = 0; i < 16; i++) {
-    makeRowSquares(i);
 }

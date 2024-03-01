@@ -1,7 +1,7 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -11,21 +11,27 @@ h1 {
 
 div {
     display: flex;
+    flex: auto;
 }
 
 #container {
+    height: 800px;
+    width: 800px;
     flex-direction: column;
     background-color: aqua;
+    border-color: black;
+    border: solid;
 }
 
 #container div {
-    background-color: yellowgreen;
-    padding: 5px;
-    margin: 5px;
+    background-color: rgb(55, 205, 50);
 }
 
+.row {
+    flex-direction: row;
+}
 
 .square {
-    border: 5px;
     border-color: black;
+    border: solid;
 }

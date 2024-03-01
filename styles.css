@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+}
+
+#container div {
+    padding: 20px;
+    background-color: yellowgreen;
+    margin: 5px;
+}
+
+.square {
+    border: 5px;
+}

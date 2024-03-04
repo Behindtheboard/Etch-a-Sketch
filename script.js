@@ -1,6 +1,13 @@
 const container = document.querySelector('#container');
 
-for (i = 0; i < 16; i++) {
+let userSquareCount = 16;
+
+const userSquareNum = document.querySelector('button');
+userSquareNum.addEventListener('click', () => {
+    userSquareCount = prompt('any number up to 100');
+})
+
+for (i = 0; i < userSquareCount; i++) {
     let rowSquare = document.createElement('div');
     rowSquare.setAttribute('id',`rowSquare${i}`);
     rowSquare.classList.add('row');
@@ -10,10 +17,8 @@ for (i = 0; i < 16; i++) {
 
 let limit;
 let squareID;
-let s;
 
-
-for (i = 0; i < 16; ++i) {
+for (i = 0; i < userSquareCount; ++i) {
     let rowSquareNumber = document.querySelector(`#rowSquare${i}`);
 
     if (i === 0) {
@@ -21,9 +26,8 @@ for (i = 0; i < 16; ++i) {
         squareID = 0;
     } else if (i > 0) {
         limit = 16*i;
-        console.log(limit);
         limit += 16;           
-    } else if (limit === 256) {
+    } else if (limit === (userSquareCount * userSquareCount)) {
     }
 
     while (squareID < limit) {
@@ -31,12 +35,16 @@ for (i = 0; i < 16; ++i) {
         square.setAttribute('id',`square${squareID}`);
         square.classList.add('square');
         square.textContent = '';
-        rowSquareNumber.appendChild(square);
+        rowSquareNumber.appendChild(square);    
         
         squareID++;      
-
-        console.log(square.id);
-        console.log(rowSquareNumber);
     }
+}
+
+for (j = 0; j < (userSquareCount * userSquareCount); j++) {
+    let squareNumber = document.querySelector(`#square${j}`);
+    squareNumber.addEventListener('mouseover', (e) => {
+        e.target.style.background = 'blue';
+    });
 }
 

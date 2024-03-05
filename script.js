@@ -1,50 +1,65 @@
 const container = document.querySelector('#container');
 
-let userSquareCount = 16;
+function squareInput(num) {
+    
+    const sketchBox = document.createElement('div');
+    sketchBox.setAttribute('id','sketchBox');
+    container.appendChild(sketchBox);
 
-const userSquareNum = document.querySelector('button');
-userSquareNum.addEventListener('click', () => {
-    userSquareCount = prompt('any number up to 100');
-})
-
-for (i = 0; i < userSquareCount; i++) {
+    for (i = 1; i <= num; i++) {
     let rowSquare = document.createElement('div');
     rowSquare.setAttribute('id',`rowSquare${i}`);
     rowSquare.classList.add('row');
     rowSquare.textContent = '';
-    container.appendChild(rowSquare);
-}
-
-let limit;
-let squareID;
-
-for (i = 0; i < userSquareCount; ++i) {
-    let rowSquareNumber = document.querySelector(`#rowSquare${i}`);
-
-    if (i === 0) {
-        limit = 16;
-        squareID = 0;
-    } else if (i > 0) {
-        limit = 16*i;
-        limit += 16;           
-    } else if (limit === (userSquareCount * userSquareCount)) {
+    sketchBox.appendChild(rowSquare);
     }
 
-    while (squareID < limit) {
-        let square = document.createElement('div');
-        square.setAttribute('id',`square${squareID}`);
-        square.classList.add('square');
-        square.textContent = '';
-        rowSquareNumber.appendChild(square);    
+    let limit;
+    let squareID;
+
+    for (i = 1; i <= num; i++) {
+        let rowSquareNumber = document.querySelector(`#rowSquare${i}`);        
         
-        squareID++;      
+        if (i === 1) {
+            limit = num;
+            squareID = 1;
+        } else if (i > 1) {
+            limit = num*i;                    
+        } else if (limit === (num * num)) {   
+        }
+
+        while (squareID <= limit) {
+            let square = document.createElement('div');
+            square.setAttribute('id',`square${squareID}`);
+            square.classList.add('square');
+            square.textContent = '';
+            rowSquareNumber.appendChild(square);    
+            
+            squareID++;      
+        }
+    }
+
+    for (j = 1; j < (num * num); j++) {
+        let squareNumber = document.querySelector(`#square${j}`);
+        squareNumber.addEventListener('mouseover', (e) => {
+            e.target.style.background = 'blue';
+        });
     }
 }
 
-for (j = 0; j < (userSquareCount * userSquareCount); j++) {
-    let squareNumber = document.querySelector(`#square${j}`);
-    squareNumber.addEventListener('mouseover', (e) => {
-        e.target.style.background = 'blue';
-    });
-}
+let userSquareCount;
 
+const userSquareBtn = document.querySelector('button');
+userSquareBtn.addEventListener('click', () => {
+    userSquareCount = prompt('Any number up to 100');
+    while (userSquareCount > 100) {
+        userSquareCount = prompt('Any number up to 100');
+    }
+    container.removeChild(sketchBox);
+    squareInput(userSquareCount);
+});
+
+if (userSquareCount === undefined) {
+    userSquareCount = 16;
+    squareInput(userSquareCount);
+} 

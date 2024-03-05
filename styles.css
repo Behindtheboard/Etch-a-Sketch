@@ -20,11 +20,15 @@ button {
     margin: 15px;
 }
 
+div button {
+    margin-top: 0px;
+}
+
 #sketchBox {
     height: 800px;
     width: 800px;
     flex-direction: column;
-    border-color: black;
+    border-color: rgb(255, 0, 0);
     border: solid;
 }
 
@@ -33,4 +37,5 @@ button {
 }
 
 .square {
+
 }
